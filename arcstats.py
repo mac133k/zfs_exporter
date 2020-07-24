@@ -12,7 +12,6 @@ class ArcstatsCollector(object):
 			items = re.split(r' +', l)
 			arcstats[items[0]] = items[2]
 
-		print(arcstats)
 		# Metric declarations	
 		ARCSTATS = GaugeMetricFamily('zfs_arcstats', 'ARC statistics.', labels=['stat'])
 		for label, value in arcstats.items():

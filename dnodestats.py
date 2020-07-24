@@ -12,7 +12,6 @@ class DnodestatsCollector(object):
 			items = re.split(r' +', l)
 			dnodestats[items[0]] = items[2]
 
-		print(dnodestats)
 		# Metric declarations	
 		DNODESTATS = GaugeMetricFamily('zfs_dnodestats', 'DNODE statistics.', labels=['stat'])
 		for label, value in dnodestats.items():

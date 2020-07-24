@@ -12,7 +12,6 @@ class ZfetchstatsCollector(object):
 			items = re.split(r' +', l)
 			zfetchstats[items[0]] = items[2]
 
-		print(zfetchstats)
 		# Metric declarations	
 		ZFETCHSTATS = GaugeMetricFamily('zfs_zfetchstats', 'ZFETCH statistics.', labels=['stat'])
 		for label, value in zfetchstats.items():

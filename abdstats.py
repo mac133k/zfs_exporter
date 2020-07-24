@@ -12,7 +12,6 @@ class AbdstatsCollector(object):
 			items = re.split(r' +', l)
 			abdstats[items[0]] = items[2]
 
-		print(abdstats)
 		# Metric declarations	
 		ABDSTATS = GaugeMetricFamily('zfs_abdstats', 'ABD statistics.', labels=['stat'])
 		for label, value in abdstats.items():

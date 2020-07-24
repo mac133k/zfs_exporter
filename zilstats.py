@@ -12,7 +12,6 @@ class ZilstatsCollector(object):
 			items = re.split(r' +', l)
 			zilstats[items[0][4:]] = items[2] # skip the 'zil_' prefix in labels
 
-		print(zilstats)
 		# Metric declarations	
 		ZILSTATS = GaugeMetricFamily('zfs_zilstats', 'ZIL statistics.', labels=['stat'])
 		for label, value in zilstats.items():

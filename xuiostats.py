@@ -12,7 +12,6 @@ class XuiostatsCollector(object):
 			items = re.split(r' +', l)
 			xuiostats[items[0]] = items[2]
 
-		print(xuiostats)
 		# Metric declarations	
 		XUIOSTATS = GaugeMetricFamily('zfs_xuiostats', 'XUIO statistics.', labels=['stat'])
 		for label, value in xuiostats.items():

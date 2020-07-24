@@ -12,7 +12,6 @@ class DbufstatsCollector(object):
 			items = re.split(r' +', l)
 			dbufstats[items[0]] = items[2]
 
-		print(dbufstats)
 		# Metric declarations	
 		DBUFSTATS = GaugeMetricFamily('zfs_dbufstats', 'DBUF statistics.', labels=['stat'])
 		for label, value in dbufstats.items():

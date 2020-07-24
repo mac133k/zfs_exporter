@@ -12,7 +12,6 @@ class DmutxCollector(object):
 			items = re.split(r' +', l)
 			dmutxstats[items[0]] = items[2]
 
-		print(dmutxstats)
 		# Metric declarations	
 		DMUTXSTATS = GaugeMetricFamily('zfs_dmu_tx', 'DMU TX statistics.', labels=['stat'])
 		for label, value in dmutxstats.items():
