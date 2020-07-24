@@ -10,6 +10,7 @@ import zfetchstats
 import dnodestats
 import dbufstats
 import dmu_tx
+import xuiostats
 
 REGISTRY.unregister(PROCESS_COLLECTOR)
 REGISTRY.unregister(PLATFORM_COLLECTOR)
@@ -19,6 +20,7 @@ REGISTRY.register(zfetchstats.ZfetchstatsCollector())
 REGISTRY.register(dnodestats.DnodestatsCollector())
 REGISTRY.register(dbufstats.DbufstatsCollector())
 REGISTRY.register(dmu_tx.DmutxCollector())
+REGISTRY.register(xuiostats.XuiostatsCollector())
 
 @app.route('/')
 def status():
