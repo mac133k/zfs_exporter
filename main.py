@@ -5,10 +5,12 @@ from prometheus_client import multiprocess, generate_latest, CollectorRegistry, 
 app = Flask('zfs_exporter')
 
 import arcstats
+import abdstats
 
 REGISTRY.unregister(PROCESS_COLLECTOR)
 REGISTRY.unregister(PLATFORM_COLLECTOR)
 REGISTRY.register(arcstats.ArcstatsCollector())
+REGISTRY.register(abdstats.AbdstatsCollector())
 
 @app.route('/')
 def status():
