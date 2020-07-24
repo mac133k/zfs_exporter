@@ -13,6 +13,7 @@ import dmu_tx
 import xuiostats
 import zilstats
 import vdevstats
+import pools
 
 REGISTRY.unregister(PROCESS_COLLECTOR)
 REGISTRY.unregister(PLATFORM_COLLECTOR)
@@ -25,6 +26,7 @@ REGISTRY.register(dmu_tx.DmutxCollector())
 REGISTRY.register(xuiostats.XuiostatsCollector())
 REGISTRY.register(zilstats.ZilstatsCollector())
 REGISTRY.register(vdevstats.VdevstatsCollector())
+REGISTRY.register(pools.PoolstatsCollector())
 
 @app.route('/')
 def status():
