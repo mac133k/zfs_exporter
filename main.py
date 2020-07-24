@@ -11,6 +11,7 @@ import dnodestats
 import dbufstats
 import dmu_tx
 import xuiostats
+import zilstats
 
 REGISTRY.unregister(PROCESS_COLLECTOR)
 REGISTRY.unregister(PLATFORM_COLLECTOR)
@@ -21,6 +22,7 @@ REGISTRY.register(dnodestats.DnodestatsCollector())
 REGISTRY.register(dbufstats.DbufstatsCollector())
 REGISTRY.register(dmu_tx.DmutxCollector())
 REGISTRY.register(xuiostats.XuiostatsCollector())
+REGISTRY.register(zilstats.ZilstatsCollector())
 
 @app.route('/')
 def status():
