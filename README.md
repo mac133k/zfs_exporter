@@ -44,7 +44,7 @@ Add the scrape job to your Prometheus config file:
 ```
 
 # Metrics
-Metrics are imported from the files in `/proc/spl/kstat/zfs/` and are generally called after the file they were extracted from with the `zfs_` prefix. The names of individual items from each stat file appear as 'stat' label values, ie.:
+Metrics are imported from the files in `/proc/spl/kstat/zfs/` and are generally named after the file they were extracted from with the `zfs_` prefix. The names of individual items from each stat file appear as 'stat' label values, ie.:
 ```
 zfs_arc_stats{stat='hits'}
 ```
