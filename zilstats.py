@@ -1,6 +1,6 @@
 import os
 import re
-from prometheus_client.core import GaugeMetricFamily, CounterMetricFamily
+from prometheus_client.core import GaugeMetricFamily
 
 class ZilstatsCollector(object):
 	def collect(self):
