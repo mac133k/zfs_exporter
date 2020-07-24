@@ -6,11 +6,13 @@ app = Flask('zfs_exporter')
 
 import arcstats
 import abdstats
+import zfetchstats
 
 REGISTRY.unregister(PROCESS_COLLECTOR)
 REGISTRY.unregister(PLATFORM_COLLECTOR)
 REGISTRY.register(arcstats.ArcstatsCollector())
 REGISTRY.register(abdstats.AbdstatsCollector())
+REGISTRY.register(zfetchstats.ZfetchstatsCollector())
 
 @app.route('/')
 def status():
