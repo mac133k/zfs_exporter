@@ -13,7 +13,7 @@ class DnodestatsCollector(object):
 			dnodestats[items[0]] = items[2]
 
 		# Metric declarations	
-		DNODESTATS = GaugeMetricFamily('zfs_dnodestats', 'DNODE statistics.', labels=['stat'])
+		DNODESTATS = GaugeMetricFamily('zfs_dnode_stats', 'DNODE statistics.', labels=['stat'])
 		for label, value in dnodestats.items():
 			DNODESTATS.add_metric([label], value)
 

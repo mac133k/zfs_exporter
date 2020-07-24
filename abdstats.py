@@ -13,7 +13,7 @@ class AbdstatsCollector(object):
 			abdstats[items[0]] = items[2]
 
 		# Metric declarations	
-		ABDSTATS = GaugeMetricFamily('zfs_abdstats', 'ABD statistics.', labels=['stat'])
+		ABDSTATS = GaugeMetricFamily('zfs_abd_stats', 'ABD statistics.', labels=['stat'])
 		for label, value in abdstats.items():
 			ABDSTATS.add_metric([label], value)
 

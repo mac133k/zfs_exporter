@@ -13,7 +13,7 @@ class ZfetchstatsCollector(object):
 			zfetchstats[items[0]] = items[2]
 
 		# Metric declarations	
-		ZFETCHSTATS = GaugeMetricFamily('zfs_zfetchstats', 'ZFETCH statistics.', labels=['stat'])
+		ZFETCHSTATS = GaugeMetricFamily('zfs_zfetch_stats', 'ZFETCH statistics.', labels=['stat'])
 		for label, value in zfetchstats.items():
 			ZFETCHSTATS.add_metric([label], value)
 

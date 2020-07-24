@@ -13,7 +13,7 @@ class ZilstatsCollector(object):
 			zilstats[items[0][4:]] = items[2] # skip the 'zil_' prefix in labels
 
 		# Metric declarations	
-		ZILSTATS = GaugeMetricFamily('zfs_zilstats', 'ZIL statistics.', labels=['stat'])
+		ZILSTATS = GaugeMetricFamily('zfs_zil_stats', 'ZIL statistics.', labels=['stat'])
 		for label, value in zilstats.items():
 			ZILSTATS.add_metric([label], value)
 

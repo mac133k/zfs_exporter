@@ -13,7 +13,7 @@ class DbufstatsCollector(object):
 			dbufstats[items[0]] = items[2]
 
 		# Metric declarations	
-		DBUFSTATS = GaugeMetricFamily('zfs_dbufstats', 'DBUF statistics.', labels=['stat'])
+		DBUFSTATS = GaugeMetricFamily('zfs_dbuf_stats', 'DBUF statistics.', labels=['stat'])
 		for label, value in dbufstats.items():
 			DBUFSTATS.add_metric([label], value)
 

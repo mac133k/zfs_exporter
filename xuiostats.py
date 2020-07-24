@@ -13,7 +13,7 @@ class XuiostatsCollector(object):
 			xuiostats[items[0]] = items[2]
 
 		# Metric declarations	
-		XUIOSTATS = GaugeMetricFamily('zfs_xuiostats', 'XUIO statistics.', labels=['stat'])
+		XUIOSTATS = GaugeMetricFamily('zfs_xuio_stats', 'XUIO statistics.', labels=['stat'])
 		for label, value in xuiostats.items():
 			XUIOSTATS.add_metric([label], value)
 

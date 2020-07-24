@@ -13,7 +13,7 @@ class ArcstatsCollector(object):
 			arcstats[items[0]] = items[2]
 
 		# Metric declarations	
-		ARCSTATS = GaugeMetricFamily('zfs_arcstats', 'ARC statistics.', labels=['stat'])
+		ARCSTATS = GaugeMetricFamily('zfs_arc_stats', 'ARC statistics.', labels=['stat'])
 		for label, value in arcstats.items():
 			ARCSTATS.add_metric([label], value)
 
