@@ -51,3 +51,10 @@ zfs_arc_stats{stat='hits'}
 Additionally the per pool metrics `zfs_pool_state` and `zfs_pool_io` have additional label `pool` which holds the name of the corresponding pool. 
 
 For the sake of simplicity each metric is of the gauge type with an unspecified unit, so it is up to the user to properly handle the semantics of interesing statistics where it comes to plotting them of graphs or referring to in alert rules etc.
+
+# PromQL
+Due to the fact that the metrics are identified by the value of the `stat` label it is sometimes necessary to add the `ignoring(stat)` operator, ie. when calculating the cache hit percentage:
+```
+100 * rate(zfs_arc_stats{stat='hits'}[5m]) / ignoring(stat) (rate(zfs_arc_stats{stat='hits'}[5m]) + ignoring(stat) rate(zfs_arc_stats{stat='misses'}[5m]))
+```
+
