@@ -23,6 +23,31 @@ Use the scripts provided:
 ./stop.sh
 ```
 
+# Running as a SystemD service
+Having ZFS Exported set up as a SystemD unit makes it easy to make sure it starts automatically after system reboot. Assuming that it was installed in `/opt` one can create a service file in `/usr/lib/systemd/system/zfs-exporter.service` or some other path depending on the distro, ie.:
+```
+[Unit]
+Description=ZFS metrics exporter for Prometheus
+
+[Service]
+Type=forking
+ExecStart=/bin/bash /opt/zfs_exporter/start.sh
+ExecStop=/bin/bash /opt/zfs_exporter/stop.sh
+PIDFile=/opt/zfs_exporter/var/pid
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Next run these few commands to complete the installation:
+```
+/opt/zfs_exporter/stop.sh # if needed
+chmod 644 /usr/lib/systemd/system/zfs-exporter.service
+systemctl daemon-reload
+systemctl enable zfs-exporter
+systemctl start zfs-exporter
+```
+
 # Testing
 Check the URL to make sure the app is running:
 ```
