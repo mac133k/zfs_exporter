@@ -69,17 +69,13 @@ Add the scrape job to your Prometheus config file:
 ```
 
 # Metrics
-Metrics are imported from the files in `/proc/spl/kstat/zfs/` and are generally named after the file they were extracted from with the `zfs_` prefix. The names of individual items from each stat file appear as 'stat' label values, ie.:
-```
-zfs_arc_stats{stat='hits'}
-```
-Additionally the per pool metrics `zfs_pool_state` and `zfs_pool_io` have additional label `pool` which holds the name of the corresponding pool. 
+Metrics are imported from the files in `/proc/spl/kstat/zfs/` and are generally named after the file they were extracted from with the `zfs_` prefix, ie. `zfs_arc_hits`, `zfs_arc_misses`, etc.
+Additionally the per pool metrics `zfs_pool_state` and `zfs_pool_io_*` have additional label `pool` which holds the name of the corresponding pool. 
 
 For the sake of simplicity each metric is of the gauge type with an unspecified unit, so it is up to the user to properly handle the semantics of interesing statistics where it comes to plotting them of graphs or referring to in alert rules etc.
 
 # PromQL
-Due to the fact that the metrics are identified by the value of the `stat` label it is sometimes necessary to add the `ignoring(stat)` operator, ie. when calculating the cache hit percentage:
+Calculate the cache hit percentage:
 ```
-100 * rate(zfs_arc_stats{stat='hits'}[5m]) / ignoring(stat) (rate(zfs_arc_stats{stat='hits'}[5m]) + ignoring(stat) rate(zfs_arc_stats{stat='misses'}[5m]))
+100 * rate(zfs_arc_hits}[5m]) / (rate(zfs_arc_hits[5m]) + rate(zfs_arc_misses[5m]))
 ```
-
