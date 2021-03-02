@@ -2,7 +2,7 @@
 ZFS metric exporter for Prometheus
 
 ## Note: Alternative available
-ZFS metrics were added to [PCP v5.2.4](https://github.com/performancecopilot/pcp/tree/5.2.4) in Feb 2021. Metrics are collected via PMDA written in C by @mac133k and include the same selection as this ZFS Exporter plus the new metrics introduced in OpenZFS v2. PCP suite supports OpenMetrics and provides Prometheus client, so I strongly recommend it to Linux users as it is a more robust solution, and provides a large number of monitoring tools and features. Switching from ZFS Exporter should be easy, because metric names follow the same convention.
+ZFS metrics were added to [PCP v5.2.4](https://github.com/performancecopilot/pcp/tree/5.2.4) in Feb 2021. Metrics are collected via PMDA written in C by [@mac133k](https://github.com/mac133k) and include the same selection as this ZFS Exporter plus the new metrics introduced in OpenZFS v2. PCP suite supports OpenMetrics and provides Prometheus client, so I strongly recommend it to Linux users as it is a more robust solution, and provides a large number of monitoring tools and features. Switching from ZFS Exporter should be easy, because metric names follow the same convention.
 
 # Overview
 Small app that uses Python Prometheus Client to serve ZSF metrics to Prometheus or other compatible metric collector. It is designed to run on Linux servers and it takes all metrics from /proc.
