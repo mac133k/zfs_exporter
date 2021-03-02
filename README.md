@@ -80,5 +80,5 @@ For the sake of simplicity each metric is of the gauge type with an unspecified 
 # PromQL
 Calculate the cache hit percentage:
 ```
-100 * rate(zfs_arc_hits}[5m]) / (rate(zfs_arc_hits[5m]) + rate(zfs_arc_misses[5m]))
+100 * rate(zfs_arc_hits[5m]) / (rate(zfs_arc_hits[5m]) + rate(zfs_arc_misses[5m]))
 ```
